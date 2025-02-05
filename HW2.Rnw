@@ -69,6 +69,8 @@ mid.points <- (left.points+right.points)/2
   \textbf{Solution:}
 <<size="scriptsize", warning=FALSE, message=FALSE>>=
 # Write code for answer here.
+#We know this is effectively the mean of the left and right point methods
+(trap.area = 0.5*(right.area+left.area))
 @
   \item Write a function that takes \texttt{a}, \texttt{b}, and number of 
   rectangles (\texttt{n.rect}) in as input and returns the Trapezoidial Rule 
@@ -76,12 +78,12 @@ mid.points <- (left.points+right.points)/2
   skeleton below. When you are done, remove \texttt{eval=FALSE} to show that
   the function provides the expected result for the example above.\\
   \textbf{Solution:}
-<<eval=FALSE, size="scriptsize", warning=FALSE, message=FALSE>>=
+<<size="scriptsize", warning=FALSE, message=FALSE>>=
 riemann.sums <- function(fnct,                        # function to integrate
                          a,                           # lower bound of integral
                          b,                           # upper bound of integral
                          n.rect,                      # number of  bound of integral
-                         method = "Trapezoidial"){    # method to use (trap by default)
+                         method = "Right"){    # method to use (trap by default)
   ######################################
   # Check Input
   ######################################
@@ -97,14 +99,27 @@ riemann.sums <- function(fnct,                        # function to integrate
   ######################################
   # Compute Area
   ######################################
+  delta.x = (b-a)/n.rect #Pre-calculating data used in several integral estimates
+  right.points = a + 1:n.rect*(delta.x)
+  left.points = a + 0:(n.rect-1)*(delta.x)
+  #Calculating left and right areas ahead of time simplifies trapezoid rule
+  left.area = sum(delta.x*(fnct(left.points)))
+  right.area = sum(delta.x*(fnct(right.points)))
   if(method == "Left"){
     # Add necessary code here
+    area = left.area
   }else if(method == "Right"){
     # Add necessary code here
+    area = right.area
   }else if(method == "Midpoint"){
     # Add necessary code here
+    mid.points = (left.points+right.points)/2
+    mid.area = sum(delta.x*(fnct(mid.points)))
+    arae = mid.area
   }else if(method == "Trapezoidial"){
     # Add necessary code here
+    trap.area = 0.5*(right.area+left.area)
+    area = trap.area
   }else{
     stop("Please select a valid method (e.g., 'Left', 'Right', 'Midpoint', 'Trapezoidial')")
   }
