@@ -83,7 +83,7 @@ riemann.sums <- function(fnct,                        # function to integrate
                          a,                           # lower bound of integral
                          b,                           # upper bound of integral
                          n.rect,                      # number of  bound of integral
-                         method = "Right"){    # method to use (trap by default)
+                         method = "Trapezoidial"){    # method to use (trap by default)
   ######################################
   # Check Input
   ######################################
@@ -106,18 +106,14 @@ riemann.sums <- function(fnct,                        # function to integrate
   left.area = sum(delta.x*(fnct(left.points)))
   right.area = sum(delta.x*(fnct(right.points)))
   if(method == "Left"){
-    # Add necessary code here
     area = left.area
   }else if(method == "Right"){
-    # Add necessary code here
     area = right.area
   }else if(method == "Midpoint"){
-    # Add necessary code here
     mid.points = (left.points+right.points)/2
     mid.area = sum(delta.x*(fnct(mid.points)))
-    arae = mid.area
+    area = mid.area
   }else if(method == "Trapezoidial"){
-    # Add necessary code here
     trap.area = 0.5*(right.area+left.area)
     area = trap.area
   }else{

@@ -174,7 +174,7 @@ We can compute the area using the Midpoint Rule as follows.
                          \hlkwc{a}\hldef{,}                           \hlcom{# lower bound of integral}
                          \hlkwc{b}\hldef{,}                           \hlcom{# upper bound of integral}
                          \hlkwc{n.rect}\hldef{,}                      \hlcom{# number of  bound of integral}
-                         \hlkwc{method} \hldef{=} \hlsng{"Right"}\hldef{)\{}    \hlcom{# method to use (trap by default)}
+                         \hlkwc{method} \hldef{=} \hlsng{"Trapezoidial"}\hldef{)\{}    \hlcom{# method to use (trap by default)}
   \hlcom{######################################}
   \hlcom{# Check Input}
   \hlcom{######################################}
@@ -197,18 +197,14 @@ We can compute the area using the Midpoint Rule as follows.
   \hldef{left.area} \hlkwb{=} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{fnct}\hldef{(left.points)))}
   \hldef{right.area} \hlkwb{=} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{fnct}\hldef{(right.points)))}
   \hlkwa{if}\hldef{(method} \hlopt{==} \hlsng{"Left"}\hldef{)\{}
-    \hlcom{# Add necessary code here}
     \hldef{area} \hlkwb{=} \hldef{left.area}
   \hldef{\}}\hlkwa{else if}\hldef{(method} \hlopt{==} \hlsng{"Right"}\hldef{)\{}
-    \hlcom{# Add necessary code here}
     \hldef{area} \hlkwb{=} \hldef{right.area}
   \hldef{\}}\hlkwa{else if}\hldef{(method} \hlopt{==} \hlsng{"Midpoint"}\hldef{)\{}
-    \hlcom{# Add necessary code here}
     \hldef{mid.points} \hlkwb{=} \hldef{(left.points}\hlopt{+}\hldef{right.points)}\hlopt{/}\hlnum{2}
     \hldef{mid.area} \hlkwb{=} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{fnct}\hldef{(mid.points)))}
-    \hldef{arae} \hlkwb{=} \hldef{mid.area}
+    \hldef{area} \hlkwb{=} \hldef{mid.area}
   \hldef{\}}\hlkwa{else if}\hldef{(method} \hlopt{==} \hlsng{"Trapezoidial"}\hldef{)\{}
-    \hlcom{# Add necessary code here}
     \hldef{trap.area} \hlkwb{=} \hlnum{0.5}\hlopt{*}\hldef{(right.area}\hlopt{+}\hldef{left.area)}
     \hldef{area} \hlkwb{=} \hldef{trap.area}
   \hldef{\}}\hlkwa{else}\hldef{\{}
@@ -228,7 +224,7 @@ We can compute the area using the Midpoint Rule as follows.
              \hlkwc{n.rect} \hldef{=} \hlnum{100}\hldef{)}
 \end{alltt}
 \begin{verbatim}
-## [1] 8.5864
+## [1] 8.6664
 \end{verbatim}
 \begin{alltt}
 \hlcom{######################################}
